@@ -1,0 +1,12 @@
+Source: ros-humble-autoware-lanelet2-extension
+Section: misc
+Priority: optional
+Maintainer: mitsudome-r <ryohsuke.mitsudome@tier4.jp>
+Build-Depends: debhelper (>= 9.0.0), libgeographic-dev, libpugixml-dev, librange-v3-dev, ros-humble-ament-cmake-auto, ros-humble-ament-cmake-ros <!nocheck>, ros-humble-autoware-cmake, ros-humble-autoware-map-msgs, ros-humble-autoware-planning-msgs, ros-humble-autoware-utils, ros-humble-geometry-msgs, ros-humble-lanelet2-core, ros-humble-lanelet2-io, ros-humble-lanelet2-maps, ros-humble-lanelet2-projection, ros-humble-lanelet2-routing, ros-humble-lanelet2-traffic-rules, ros-humble-lanelet2-validation, ros-humble-rclcpp, ros-humble-tf2, ros-humble-tf2-geometry-msgs, ros-humble-visualization-msgs, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-autoware-lanelet2-extension
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgeographic-dev, libpugixml-dev, librange-v3-dev, ros-humble-autoware-map-msgs, ros-humble-autoware-planning-msgs, ros-humble-autoware-utils, ros-humble-geometry-msgs, ros-humble-lanelet2-core, ros-humble-lanelet2-io, ros-humble-lanelet2-maps, ros-humble-lanelet2-projection, ros-humble-lanelet2-routing, ros-humble-lanelet2-traffic-rules, ros-humble-lanelet2-validation, ros-humble-rclcpp, ros-humble-tf2, ros-humble-tf2-geometry-msgs, ros-humble-visualization-msgs, ros-humble-ros-workspace
+Description: The autoware_lanelet2_extension package contains libraries to handle Lanelet2 format data.
