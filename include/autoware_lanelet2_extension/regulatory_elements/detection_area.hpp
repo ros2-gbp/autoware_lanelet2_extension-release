@@ -14,8 +14,8 @@
 //
 // Authors: Ryohsuke Mitsudome
 
-#ifndef LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
-#define LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -26,6 +26,9 @@
 #include <memory>
 
 namespace lanelet::autoware
+{
+
+inline namespace format_v1
 {
 class DetectionArea : public lanelet::RegulatoryElement
 {
@@ -88,9 +91,10 @@ private:
   friend class RegisterRegulatoryElement<DetectionArea>;
   explicit DetectionArea(const lanelet::RegulatoryElementDataPtr & data);
 };
+}  // namespace format_v1
 
 }  // namespace lanelet::autoware
 
 // NOLINTEND(readability-identifier-naming)
 
-#endif  // LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
