@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LANELET2_EXTENSION__REGULATORY_ELEMENTS__CROSSWALK_HPP_
-#define LANELET2_EXTENSION__REGULATORY_ELEMENTS__CROSSWALK_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__REGULATORY_ELEMENTS__CROSSWALK_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__REGULATORY_ELEMENTS__CROSSWALK_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -24,6 +24,9 @@
 #include <memory>
 
 namespace lanelet::autoware
+{
+
+inline namespace format_v1
 {
 class Crosswalk : public lanelet::RegulatoryElement
 {
@@ -84,9 +87,10 @@ private:
   friend class RegisterRegulatoryElement<Crosswalk>;
   explicit Crosswalk(const lanelet::RegulatoryElementDataPtr & data);
 };
+}  // namespace format_v1
 
 }  // namespace lanelet::autoware
 
 // NOLINTEND(readability-identifier-naming)
 
-#endif  // LANELET2_EXTENSION__REGULATORY_ELEMENTS__CROSSWALK_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__REGULATORY_ELEMENTS__CROSSWALK_HPP_
