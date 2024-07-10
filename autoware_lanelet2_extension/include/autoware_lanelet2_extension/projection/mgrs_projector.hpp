@@ -14,8 +14,8 @@
 //
 // Authors: Simon Thompson, Ryohsuke Mitsudome
 
-#ifndef LANELET2_EXTENSION__PROJECTION__MGRS_PROJECTOR_HPP_
-#define LANELET2_EXTENSION__PROJECTION__MGRS_PROJECTOR_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__PROJECTION__MGRS_PROJECTOR_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__PROJECTION__MGRS_PROJECTOR_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -29,6 +29,9 @@
 #include <utility>
 
 namespace lanelet::projection
+{
+
+inline namespace format_v1
 {
 class MGRSProjector : public Projector
 {
@@ -108,9 +111,10 @@ private:
    */
   mutable std::string projected_grid_;
 };
+}  // namespace format_v1
 
 }  // namespace lanelet::projection
 
 // NOLINTEND(readability-identifier-naming)
 
-#endif  // LANELET2_EXTENSION__PROJECTION__MGRS_PROJECTOR_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__PROJECTION__MGRS_PROJECTOR_HPP_
