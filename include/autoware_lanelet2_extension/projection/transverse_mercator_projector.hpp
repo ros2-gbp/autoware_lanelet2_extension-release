@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LANELET2_EXTENSION__PROJECTION__TRANSVERSE_MERCATOR_PROJECTOR_HPP_
-#define LANELET2_EXTENSION__PROJECTION__TRANSVERSE_MERCATOR_PROJECTOR_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__PROJECTION__TRANSVERSE_MERCATOR_PROJECTOR_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__PROJECTION__TRANSVERSE_MERCATOR_PROJECTOR_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming, modernize-use-nodiscard)
 
@@ -26,6 +26,9 @@
 #include <utility>
 
 namespace lanelet::projection
+{
+
+inline namespace format_v1
 {
 class TransverseMercatorProjector : public Projector
 {
@@ -53,9 +56,10 @@ private:
   double origin_y_;
   double central_meridian_;
 };
+}  // namespace format_v1
 
 }  // namespace lanelet::projection
 
 // NOLINTEND(readability-identifier-naming, modernize-use-nodiscard)
 
-#endif  // LANELET2_EXTENSION__PROJECTION__TRANSVERSE_MERCATOR_PROJECTOR_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__PROJECTION__TRANSVERSE_MERCATOR_PROJECTOR_HPP_
