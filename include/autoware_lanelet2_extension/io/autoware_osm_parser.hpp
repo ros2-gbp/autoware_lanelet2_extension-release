@@ -14,14 +14,17 @@
 //
 // Authors: Ryohsuke Mitsudome
 
-#ifndef LANELET2_EXTENSION__IO__AUTOWARE_OSM_PARSER_HPP_
-#define LANELET2_EXTENSION__IO__AUTOWARE_OSM_PARSER_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__IO__AUTOWARE_OSM_PARSER_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__IO__AUTOWARE_OSM_PARSER_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming)
+
+#include <autoware_lanelet2_extension/version.hpp>
 
 #include <lanelet2_io/io_handlers/OsmHandler.h>
 
 #include <memory>
+#include <optional>
 #include <string>
 
 namespace lanelet::io_handlers
@@ -56,8 +59,10 @@ public:
   static constexpr const char * name() { return "autoware_osm_handler"; }
 };
 
+std::optional<uint64_t> parseMajorVersion(const std::string & format_version);
+
 }  // namespace lanelet::io_handlers
 
 // NOLINTEND(readability-identifier-naming)
 
-#endif  // LANELET2_EXTENSION__IO__AUTOWARE_OSM_PARSER_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__IO__AUTOWARE_OSM_PARSER_HPP_
