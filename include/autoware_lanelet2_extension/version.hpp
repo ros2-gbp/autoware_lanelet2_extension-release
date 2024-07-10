@@ -1,4 +1,4 @@
-// Copyright 2022 TIER IV, Inc.
+// Copyright 2015-2024 Autoware Foundation. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,23 +11,26 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
+// Authors: Mamoru Sobue
 
-#ifndef AUTOWARE_LANELET2_EXTENSION__UTILITY__ROUTE_CHECKER_HPP_
-#define AUTOWARE_LANELET2_EXTENSION__UTILITY__ROUTE_CHECKER_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__VERSION_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__VERSION_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming)
 
-#include <autoware_planning_msgs/msg/lanelet_route.hpp>
-
-#include <lanelet2_core/Forward.h>
-
-namespace lanelet::utils::route
+namespace lanelet::autoware
 {
-using autoware_planning_msgs::msg::LaneletRoute;
+/*
+ * @brief denotes the major format_version
+ */
+enum class Version : int {
+  none = 0,
+  format_v1,
+};
 
-bool isRouteValid(const LaneletRoute & route, const lanelet::LaneletMapPtr lanelet_map_ptr_);
-}  // namespace lanelet::utils::route
+// current format_version
+static constexpr Version version = Version::format_v1;
+}  // namespace lanelet::autoware
 
-// NOLINTEND(readability-identifier-naming)
-
-#endif  // AUTOWARE_LANELET2_EXTENSION__UTILITY__ROUTE_CHECKER_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__VERSION_HPP_
