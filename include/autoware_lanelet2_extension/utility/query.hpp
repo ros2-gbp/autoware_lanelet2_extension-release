@@ -14,8 +14,8 @@
 //
 // Authors: Simon Thompson, Ryohsuke Mitsudome
 
-#ifndef LANELET2_EXTENSION__UTILITY__QUERY_HPP_
-#define LANELET2_EXTENSION__UTILITY__QUERY_HPP_
+#ifndef AUTOWARE_LANELET2_EXTENSION__UTILITY__QUERY_HPP_
+#define AUTOWARE_LANELET2_EXTENSION__UTILITY__QUERY_HPP_
 
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -39,22 +39,9 @@
 
 namespace lanelet::utils::query
 {
-/**
- * [laneletLayer converts laneletLayer into lanelet vector]
- * @param  ll_Map [input lanelet map]
- * @return        [all lanelets in the map]
- */
-lanelet::ConstLanelets laneletLayer(const lanelet::LaneletMapConstPtr & ll_Map);
 
-/**
- * [subtypeLanelets extracts Lanelet that has given subtype attribute]
- * @param  lls     [input lanelets with various subtypes]
- * @param  subtype [subtype of lanelets to be retrieved (e.g.
- * lanelet::AttributeValueString::Road)]
- * @return         [lanelets with given subtype]
- */
-lanelet::ConstLanelets subtypeLanelets(const lanelet::ConstLanelets & lls, const char subtype[]);
-
+inline namespace format_v1
+{
 /**
  * [crosswalkLanelets extracts crosswalk lanelets]
  * @param  lls [input lanelets with various subtypes]
@@ -62,13 +49,6 @@ lanelet::ConstLanelets subtypeLanelets(const lanelet::ConstLanelets & lls, const
  */
 lanelet::ConstLanelets crosswalkLanelets(const lanelet::ConstLanelets & lls);
 lanelet::ConstLanelets walkwayLanelets(const lanelet::ConstLanelets & lls);
-
-/**
- * [roadLanelets extracts road lanelets]
- * @param  lls [input lanelets with subtype road]
- * @return     [road lanelets]
- */
-lanelet::ConstLanelets roadLanelets(const lanelet::ConstLanelets & lls);
 
 /**
  * [shoulderLanelets extracts shoulder lanelets]
@@ -132,10 +112,6 @@ std::vector<lanelet::CrosswalkConstPtr> crosswalks(const lanelet::ConstLanelets 
 // query all curbstones in lanelet2 map
 lanelet::ConstLineStrings3d curbstones(const lanelet::LaneletMapConstPtr & lanelet_map_ptr);
 
-// query all polygons that has given type in lanelet2 map
-lanelet::ConstPolygons3d getAllPolygonsByType(
-  const lanelet::LaneletMapConstPtr & lanelet_map_ptr, const std::string & polygon_type);
-
 // query all obstacle polygons in lanelet2 map
 lanelet::ConstPolygons3d getAllObstaclePolygons(
   const lanelet::LaneletMapConstPtr & lanelet_map_ptr);
@@ -191,6 +167,10 @@ bool getLinkedParkingLot(
 bool getLinkedParkingLot(
   const lanelet::BasicPoint2d & current_position, const lanelet::ConstPolygons3d & all_parking_lots,
   lanelet::ConstPolygon3d * linked_parking_lot);
+bool getLinkedParkingLot(
+  const lanelet::BasicPoint2d & current_position,
+  const lanelet::LaneletMapConstPtr & lanelet_map_ptr,
+  lanelet::ConstPolygon3d * linked_parking_lot);
 // get linked parking lot from parking space
 bool getLinkedParkingLot(
   const lanelet::ConstLineString3d & parking_space,
@@ -227,6 +207,34 @@ std::vector<lanelet::ConstLineString3d> stopLinesLanelet(const lanelet::ConstLan
  */
 std::vector<lanelet::ConstLineString3d> stopSignStopLines(
   const lanelet::ConstLanelets & lanelets, const std::string & stop_sign_id = "stop_sign");
+}  // namespace format_v1
+
+/**
+ * [laneletLayer converts laneletLayer into lanelet vector]
+ * @param  ll_Map [input lanelet map]
+ * @return        [all lanelets in the map]
+ */
+lanelet::ConstLanelets laneletLayer(const lanelet::LaneletMapConstPtr & ll_Map);
+
+/**
+ * [subtypeLanelets extracts Lanelet that has given subtype attribute]
+ * @param  lls     [input lanelets with various subtypes]
+ * @param  subtype [subtype of lanelets to be retrieved (e.g.
+ * lanelet::AttributeValueString::Road)]
+ * @return         [lanelets with given subtype]
+ */
+lanelet::ConstLanelets subtypeLanelets(const lanelet::ConstLanelets & lls, const char subtype[]);
+
+/**
+ * [roadLanelets extracts road lanelets]
+ * @param  lls [input lanelets with subtype road]
+ * @return     [road lanelets]
+ */
+lanelet::ConstLanelets roadLanelets(const lanelet::ConstLanelets & lls);
+
+// query all polygons that has given type in lanelet2 map
+lanelet::ConstPolygons3d getAllPolygonsByType(
+  const lanelet::LaneletMapConstPtr & lanelet_map_ptr, const std::string & polygon_type);
 
 ConstLanelets getLaneletsWithinRange(
   const lanelet::ConstLanelets & lanelets, const lanelet::BasicPoint2d & search_point,
@@ -298,4 +306,4 @@ std::vector<lanelet::ConstLanelets> getPrecedingLaneletSequences(
 
 // NOLINTEND(readability-identifier-naming)
 
-#endif  // LANELET2_EXTENSION__UTILITY__QUERY_HPP_
+#endif  // AUTOWARE_LANELET2_EXTENSION__UTILITY__QUERY_HPP_
