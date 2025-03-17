@@ -2,6 +2,23 @@
 Changelog for package autoware_lanelet2_extension
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.3 (2025-03-17)
+------------------
+* docs(localization_landmarks): add localization reflector subtype (`#44 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/44>`_)
+  doc: add localization reflector subtype
+* feat: add the lanelet length test (`#39 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/39>`_)
+  * lanelet length test added.
+  * style(pre-commit): autofix
+  * compare the precise values
+  ---------
+  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+  Co-authored-by: Yutaka Kondo <yutaka.kondo@youtalk.jp>
+* docs: update projection type from "local" to "Local" (`#34 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/34>`_)
+* chore: sync files (`#42 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/42>`_)
+  Co-authored-by: M. Fatih Cırıt <mfc@autoware.org>
+* fix(autoware_lanelet2_extension): fix links to issues in CHANGELOG.rst files (`#40 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/40>`_)
+* Contributors: Esteve Fernandez, Hans Oersted, Motz, Ryohsuke Mitsudome, awf-autoware-bot[bot]
+
 0.6.2 (2024-11-21)
 ------------------
 * fix: update the github link of map_loader (`#31 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/31>`_)
@@ -46,10 +63,10 @@ Changelog for package autoware_lanelet2_extension
 
 0.4.0 (2024-06-24)
 ------------------
-* Merge pull request `#11 <https://github.com/youtalk/autoware_lanelet2_extension/issues/11>`_ from youtalk/import-update
+* Merge pull request `#11 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/11>`_ from youtalk/import-update
   feat: import updates from `autoware_common`
 * fix link
-* feat(lanelet2_extension): overwriteLaneletsCenterline supports "waypoints" (`#252 <https://github.com/youtalk/autoware_lanelet2_extension/issues/252>`_)
+* feat(lanelet2_extension): overwriteLaneletsCenterline supports "waypoints" (`#252 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/252>`_)
   * feat(lanelet2_extension): centerline is converted to waypoints
   * fix lanelet2_extension_python
   * update README
@@ -64,18 +81,18 @@ Changelog for package autoware_lanelet2_extension
   ---------
   Co-authored-by: Ryohsuke Mitsudome <43976834+mitsudome-r@users.noreply.github.com>
   Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
-* fix: boost optional build error on rolling environment (`#241 <https://github.com/youtalk/autoware_lanelet2_extension/issues/241>`_)
-* perf(lanelet2_extension): use std::unordered_set<>::find instead of std::find (`#244 <https://github.com/youtalk/autoware_lanelet2_extension/issues/244>`_)
+* fix: boost optional build error on rolling environment (`#241 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/241>`_)
+* perf(lanelet2_extension): use std::unordered_set<>::find instead of std::find (`#244 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/244>`_)
   perf(exists): use std::unordered_set<>::find instead of std::find
 * Contributors: Maxime CLEMENT, Takayuki Murooka, Yutaka Kondo, ぐるぐる
 
 0.3.0 (2024-05-31)
 ------------------
 * Merge remote-tracking branch 'upstream/main' into rolling
-* Merge pull request `#6 <https://github.com/youtalk/autoware_lanelet2_extension/issues/6>`_ from youtalk/autoware-msgs-migration
+* Merge pull request `#6 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/6>`_ from youtalk/autoware-msgs-migration
   feat: `autoware_msgs` migration
 * feat(autoware_common): update and replace autoware_auto_msg
-* feat(lanelet2_extension): replace autoware_auto_mapping_msg with autoware_map_msg (`#216 <https://github.com/youtalk/autoware_lanelet2_extension/issues/216>`_)
+* feat(lanelet2_extension): replace autoware_auto_mapping_msg with autoware_map_msg (`#216 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/216>`_)
   * feat(lanelet2_extension): replace autoware-auto-mapping-msg to autoware-map-msg
   * style(pre-commit): autofix
   ---------
@@ -84,7 +101,7 @@ Changelog for package autoware_lanelet2_extension
 
 0.2.0 (2024-05-07)
 ------------------
-* refactor: add `autoware\_` prefix to package names and namespaces (`#3 <https://github.com/youtalk/autoware_lanelet2_extension/issues/3>`_)
+* refactor: add `autoware\_` prefix to package names and namespaces (`#3 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/3>`_)
   * fix readme
   * fix link
   * fix link
