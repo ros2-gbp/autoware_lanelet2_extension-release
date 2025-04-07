@@ -22,6 +22,7 @@
 #include <lanelet2_traffic_rules/TrafficRulesFactory.h>
 
 #include <map>
+#include <unordered_map>
 
 using lanelet::Lanelet;
 using lanelet::LineString3d;
@@ -156,6 +157,15 @@ TEST_F(TestSuite, OverwriteLaneletsCenterline)  // NOLINT for gtest
   for (const auto & lanelet : sample_map_ptr->laneletLayer) {
     ASSERT_TRUE(lanelet.hasCustomCenterline()) << "failed to calculate fine centerline";
   }
+}
+
+TEST_F(TestSuite, GetLaneletLength)  // NOLINT for gtest
+{
+  double length_2d = lanelet::utils::getLaneletLength2d(road_lanelet);
+  double length_3d = lanelet::utils::getLaneletLength3d(road_lanelet);
+
+  EXPECT_DOUBLE_EQ(length_2d, 1.0);
+  EXPECT_DOUBLE_EQ(length_3d, 1.0);
 }
 
 /*
