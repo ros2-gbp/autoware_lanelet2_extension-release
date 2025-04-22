@@ -1,1 +1,1 @@
-{"base": "bfee439", "parent": "debian/rolling/autoware_lanelet2_extension_python", "previous": "c089cb0", "trim": "", "trimbase": ""}
+{"base": "a48eb2ea70f4", "parent": "debian/kilted/autoware_lanelet2_extension_python", "previous": "fdb1857cb4bd", "trim": "", "trimbase": ""}
