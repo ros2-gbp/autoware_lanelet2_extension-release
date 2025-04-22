@@ -1,0 +1,12 @@
+Source: ros-kilted-autoware-lanelet2-extension
+Section: misc
+Priority: optional
+Maintainer: mitsudome-r <ryohsuke.mitsudome@tier4.jp>
+Build-Depends: debhelper (>= 9.0.0), libgeographiclib-dev, libpugixml-dev, librange-v3-dev, ros-kilted-ament-cmake-auto, ros-kilted-ament-cmake-ros <!nocheck>, ros-kilted-autoware-cmake, ros-kilted-autoware-map-msgs, ros-kilted-autoware-planning-msgs, ros-kilted-geometry-msgs, ros-kilted-lanelet2-core, ros-kilted-lanelet2-io, ros-kilted-lanelet2-maps, ros-kilted-lanelet2-projection, ros-kilted-lanelet2-routing, ros-kilted-lanelet2-traffic-rules, ros-kilted-lanelet2-validation, ros-kilted-rclcpp, ros-kilted-tf2, ros-kilted-tf2-geometry-msgs, ros-kilted-visualization-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-autoware-lanelet2-extension
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgeographiclib-dev, libpugixml-dev, librange-v3-dev, ros-kilted-autoware-map-msgs, ros-kilted-autoware-planning-msgs, ros-kilted-geometry-msgs, ros-kilted-lanelet2-core, ros-kilted-lanelet2-io, ros-kilted-lanelet2-maps, ros-kilted-lanelet2-projection, ros-kilted-lanelet2-routing, ros-kilted-lanelet2-traffic-rules, ros-kilted-lanelet2-validation, ros-kilted-rclcpp, ros-kilted-tf2, ros-kilted-tf2-geometry-msgs, ros-kilted-visualization-msgs, ros-kilted-ros-workspace
+Description: The autoware_lanelet2_extension package contains libraries to handle Lanelet2 format data.
