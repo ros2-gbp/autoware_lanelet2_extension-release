@@ -1,3 +1,28 @@
+## autoware_lanelet2_extension (rolling) - 0.7.2-1
+
+The packages in the `autoware_lanelet2_extension` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --rosdistro rolling autoware_lanelet2_extension` on `Wed, 14 May 2025 04:54:32 -0000`
+
+These packages were released:
+- `autoware_lanelet2_extension`
+- `autoware_lanelet2_extension_python`
+
+Version of package(s) in repository `autoware_lanelet2_extension`:
+
+- upstream repository: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
+- release repository: https://github.com/ros2-gbp/autoware_lanelet2_extension-release.git
+- rosdistro version: `0.7.1-1`
+- old version: `0.7.1-1`
+- new version: `0.7.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.25.1`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## autoware_lanelet2_extension (jazzy) - 0.7.2-1
 
 The packages in the `autoware_lanelet2_extension` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --rosdistro jazzy autoware_lanelet2_extension` on `Wed, 14 May 2025 04:52:04 -0000`
