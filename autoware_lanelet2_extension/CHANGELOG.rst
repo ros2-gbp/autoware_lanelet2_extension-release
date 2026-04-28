@@ -2,45 +2,6 @@
 Changelog for package autoware_lanelet2_extension
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.10.0 (2025-11-05)
--------------------
-* chore: add build option -Wno-error=maybe-uninitialized (`#79 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/79>`_)
-  build::jazzy-porting::add build option -Wno-error=maybe-uninitialized to surpress compile error caused by boost-geometry library, v0.0
-* fix: combineLaneletsShape duplicated point (`#77 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/77>`_)
-  * fix: combineLaneletsShape duplicated point
-  * check distance
-  style(pre-commit): autofix
-  style(pre-commit): autofix
-  ---------
-* Contributors: Kosuke Takeuchi, 心刚
-
-0.9.0 (2025-08-04)
-------------------
-* feat: add roundabout regulatory element (`#75 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/75>`_)
-  * feat: add roundabout regulatory element implementation
-  * feat: add entry and exit lanelet checks for roundabouts
-  * feat: enhance roundabout functionality with lanelet ID caching and checks
-  * feat: update roundabout lanelet checks to use lanelet IDs
-  * style(pre-commit): autofix
-  * fix: include unordered_set for improved functionality
-  * style(pre-commit): autofix
-  * fix: remove unnecessary include
-  Co-authored-by: Yukinari Hisaki <42021302+yhisaki@users.noreply.github.com>
-  ---------
-  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
-  Co-authored-by: Yukinari Hisaki <42021302+yhisaki@users.noreply.github.com>
-* Contributors: Sho Iwasawa
-
-0.8.0 (2025-07-22)
-------------------
-* feat: add linestring with type getter (`#73 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/73>`_)
-* fix: skip duplicate marker (`#69 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/69>`_)
-  * fix: skip duplicate marker
-  * style(pre-commit): autofix
-  ---------
-  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
-* Contributors: Ryohsuke Mitsudome, Zulfaqar Azmi
-
 0.7.2 (2025-05-14)
 ------------------
 * fix(autoware_lanelet2_extension): point on the edge of a triangle was  not treated as inside the triangle (`#66 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/66>`_)
