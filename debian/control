@@ -1,0 +1,12 @@
+Source: ros-lyrical-autoware-lanelet2-extension-python
+Section: misc
+Priority: optional
+Maintainer: Mamoru Sobue <mamoru.sobue@tier4.jp>
+Build-Depends: debhelper (>= 9.0.0), libboost-python-dev, ros-lyrical-ament-cmake-auto, ros-lyrical-ament-cmake-ros <!nocheck>, ros-lyrical-autoware-cmake, ros-lyrical-autoware-lanelet2-extension, ros-lyrical-geometry-msgs, ros-lyrical-lanelet2-core, ros-lyrical-lanelet2-io, ros-lyrical-lanelet2-projection, ros-lyrical-lanelet2-python, ros-lyrical-lanelet2-routing, ros-lyrical-lanelet2-traffic-rules, ros-lyrical-lanelet2-validation, ros-lyrical-python-cmake-module, ros-lyrical-rclcpp, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/autoware_lanelet2_extension_python/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-autoware-lanelet2-extension-python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-python-dev, ros-lyrical-autoware-lanelet2-extension, ros-lyrical-geometry-msgs, ros-lyrical-lanelet2-core, ros-lyrical-lanelet2-io, ros-lyrical-lanelet2-projection, ros-lyrical-lanelet2-python, ros-lyrical-lanelet2-routing, ros-lyrical-lanelet2-traffic-rules, ros-lyrical-lanelet2-validation, ros-lyrical-rclcpp, ros-lyrical-ros-workspace
+Description: The autoware_lanelet2_extension_python package contains Python bindings for lanelet2_extension package
