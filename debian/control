@@ -1,0 +1,12 @@
+Source: ros-lyrical-autoware-lanelet2-extension
+Section: misc
+Priority: optional
+Maintainer: mitsudome-r <ryohsuke.mitsudome@tier4.jp>
+Build-Depends: debhelper (>= 9.0.0), libgeographiclib-dev, libpugixml-dev, librange-v3-dev, ros-lyrical-ament-cmake-auto, ros-lyrical-ament-cmake-ros <!nocheck>, ros-lyrical-autoware-cmake, ros-lyrical-autoware-map-msgs, ros-lyrical-autoware-planning-msgs, ros-lyrical-geometry-msgs, ros-lyrical-lanelet2-core, ros-lyrical-lanelet2-io, ros-lyrical-lanelet2-maps, ros-lyrical-lanelet2-projection, ros-lyrical-lanelet2-routing, ros-lyrical-lanelet2-traffic-rules, ros-lyrical-lanelet2-validation, ros-lyrical-rclcpp, ros-lyrical-tf2, ros-lyrical-tf2-geometry-msgs, ros-lyrical-visualization-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/autoware_lanelet2_extension/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-autoware-lanelet2-extension
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgeographiclib-dev, libpugixml-dev, librange-v3-dev, ros-lyrical-autoware-map-msgs, ros-lyrical-autoware-planning-msgs, ros-lyrical-geometry-msgs, ros-lyrical-lanelet2-core, ros-lyrical-lanelet2-io, ros-lyrical-lanelet2-maps, ros-lyrical-lanelet2-projection, ros-lyrical-lanelet2-routing, ros-lyrical-lanelet2-traffic-rules, ros-lyrical-lanelet2-validation, ros-lyrical-rclcpp, ros-lyrical-tf2, ros-lyrical-tf2-geometry-msgs, ros-lyrical-visualization-msgs, ros-lyrical-ros-workspace
+Description: The autoware_lanelet2_extension package contains libraries to handle Lanelet2 format data.
