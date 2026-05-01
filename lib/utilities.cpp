@@ -18,8 +18,14 @@
 
 #include "autoware_lanelet2_extension/utility/utilities.hpp"
 
+#include "./deprecated.hpp"
 #include "autoware_lanelet2_extension/utility/message_conversion.hpp"
 #include "autoware_lanelet2_extension/utility/query.hpp"
+
+#include <rclcpp/rclcpp.hpp>
+#include <tf2/utils.hpp>
+
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 #include <lanelet2_core/geometry/Lanelet.h>
 #include <lanelet2_core/geometry/LineString.h>
@@ -30,19 +36,11 @@
 #include <lanelet2_traffic_rules/TrafficRules.h>
 #include <lanelet2_traffic_rules/TrafficRulesFactory.h>
 
-#include <iostream>
-
-#ifdef ROS_DISTRO_GALACTIC
-#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
-#else
-#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
-#endif
-
-#include <rclcpp/rclcpp.hpp>
-
 #include <algorithm>
+#include <iostream>
 #include <limits>
 #include <map>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -270,19 +268,30 @@ lanelet::LineString3d getLineStringFromArcLength(
 
 lanelet::ConstLanelet combineLaneletsShape(const lanelet::ConstLanelets & lanelets)
 {
-  lanelet::Points3d lefts;
-  lanelet::Points3d rights;
-  lanelet::Points3d centers;
+  const auto addUniquePoint = [](lanelet::Points3d & points, const lanelet::Point3d & new_point) {
+    constexpr double distance_threshold = 0.01;
+    const auto is_duplicate = std::any_of(
+      points.cbegin(), points.cend(),
+      [&new_point, distance_threshold](const auto & existing_point) {
+        return boost::geometry::distance(existing_point.basicPoint(), new_point.basicPoint()) <=
+               distance_threshold;
+      });
+    if (!is_duplicate) points.emplace_back(new_point);
+  };
+
+  const auto addUniquePoints = [&addUniquePoint](
+                                 lanelet::Points3d & output, const auto & input_points) {
+    std::for_each(
+      input_points.begin(), input_points.end(), [&output, &addUniquePoint](const auto & pt) {
+        addUniquePoint(output, lanelet::Point3d(pt));
+      });
+  };
+
+  lanelet::Points3d lefts, rights, centers;
   for (const auto & llt : lanelets) {
-    for (const auto & pt : llt.leftBound()) {
-      lefts.push_back(lanelet::Point3d(pt));
-    }
-    for (const auto & pt : llt.rightBound()) {
-      rights.push_back(lanelet::Point3d(pt));
-    }
-    for (const auto & pt : llt.centerline()) {
-      centers.push_back(lanelet::Point3d(pt));
-    }
+    addUniquePoints(lefts, llt.leftBound());
+    addUniquePoints(rights, llt.rightBound());
+    addUniquePoints(centers, llt.centerline());
   }
   const auto left_bound = lanelet::LineString3d(lanelet::InvalId, lefts);
   const auto right_bound = lanelet::LineString3d(lanelet::InvalId, rights);
@@ -497,7 +506,7 @@ lanelet::ConstLanelets getExpandedLanelets(
 {
   lanelet::ConstLanelets lanelets;
   for (const auto & llt : lanelet_obj) {
-    lanelets.push_back(getExpandedLanelet(llt, left_offset, right_offset));
+    lanelets.push_back(deprecated::getExpandedLanelet(llt, left_offset, right_offset));
   }
   return lanelets;
 }
@@ -507,7 +516,7 @@ void overwriteLaneletsCenterline(
 {
   for (auto & lanelet_obj : lanelet_map->laneletLayer) {
     if (force_overwrite || !lanelet_obj.hasCustomCenterline()) {
-      const auto fine_center_line = generateFineCenterline(lanelet_obj, resolution);
+      const auto fine_center_line = deprecated::generateFineCenterline(lanelet_obj, resolution);
       lanelet_obj.setCenterline(fine_center_line);
     }
   }
@@ -518,7 +527,7 @@ void overwriteLaneletsCenterlineWithWaypoints(
 {
   for (auto & lanelet_obj : lanelet_map->laneletLayer) {
     if (force_overwrite) {
-      const auto fine_center_line = generateFineCenterline(lanelet_obj, resolution);
+      const auto fine_center_line = deprecated::generateFineCenterline(lanelet_obj, resolution);
       lanelet_obj.setCenterline(fine_center_line);
     } else {
       if (lanelet_obj.hasCustomCenterline()) {
@@ -526,7 +535,7 @@ void overwriteLaneletsCenterlineWithWaypoints(
         lanelet_obj.setAttribute("waypoints", centerline.id());
       }
 
-      const auto fine_center_line = generateFineCenterline(lanelet_obj, resolution);
+      const auto fine_center_line = deprecated::generateFineCenterline(lanelet_obj, resolution);
       lanelet_obj.setCenterline(fine_center_line);
     }
   }
@@ -640,7 +649,7 @@ double getLaneletLength2d(const lanelet::ConstLanelets & lanelet_sequence)
 {
   double length = 0;
   for (const auto & llt : lanelet_sequence) {
-    length += getLaneletLength2d(llt);
+    length += lanelet::geometry::length2d(llt);
   }
   return length;
 }
@@ -649,7 +658,7 @@ double getLaneletLength3d(const lanelet::ConstLanelets & lanelet_sequence)
 {
   double length = 0;
   for (const auto & llt : lanelet_sequence) {
-    length += getLaneletLength3d(llt);
+    length += lanelet::geometry::length3d(llt);
   }
   return length;
 }
@@ -658,14 +667,14 @@ lanelet::ArcCoordinates getArcCoordinates(
   const lanelet::ConstLanelets & lanelet_sequence, const geometry_msgs::msg::Pose & pose)
 {
   lanelet::ConstLanelet closest_lanelet;
-  lanelet::utils::query::getClosestLanelet(lanelet_sequence, pose, &closest_lanelet);
+  deprecated::getClosestLanelet(lanelet_sequence, pose, &closest_lanelet);
 
   double length = 0;
   lanelet::ArcCoordinates arc_coordinates;
   for (const auto & llt : lanelet_sequence) {
     const auto & centerline_2d = lanelet::utils::to2D(llt.centerline());
     if (llt == closest_lanelet) {
-      const auto lanelet_point = lanelet::utils::conversion::toLaneletPoint(pose.position);
+      const auto lanelet_point = deprecated::toLaneletPoint(pose.position);
       arc_coordinates = lanelet::geometry::toArcCoordinates(
         centerline_2d, lanelet::utils::to2D(lanelet_point).basicPoint());
       arc_coordinates.length += length;
@@ -681,7 +690,7 @@ lanelet::ArcCoordinates getArcCoordinatesOnEgoCenterline(
   const lanelet::LaneletMapConstPtr & lanelet_map_ptr)
 {
   lanelet::ConstLanelet closest_lanelet;
-  lanelet::utils::query::getClosestLanelet(lanelet_sequence, pose, &closest_lanelet);
+  deprecated::getClosestLanelet(lanelet_sequence, pose, &closest_lanelet);
 
   double length = 0;
   lanelet::ArcCoordinates arc_coordinates;
@@ -695,7 +704,7 @@ lanelet::ArcCoordinates getArcCoordinatesOnEgoCenterline(
     }
 
     if (llt == closest_lanelet) {
-      const auto lanelet_point = lanelet::utils::conversion::toLaneletPoint(pose.position);
+      const auto lanelet_point = deprecated::toLaneletPoint(pose.position);
       arc_coordinates = lanelet::geometry::toArcCoordinates(
         centerline_2d, lanelet::utils::to2D(lanelet_point).basicPoint());
       arc_coordinates.length += length;
@@ -739,8 +748,8 @@ lanelet::ConstLineString3d getClosestSegment(
 lanelet::CompoundPolygon3d getPolygonFromArcLength(
   const lanelet::ConstLanelets & lanelets, const double s1, const double s2)
 {
-  const auto combined_lanelet = combineLaneletsShape(lanelets);
-  const auto total_length = getLaneletLength2d(combined_lanelet);
+  const auto combined_lanelet = deprecated::combineLaneletsShape(lanelets);
+  const auto total_length = lanelet::geometry::length2d(combined_lanelet);
 
   // make sure that s1, and s2 are between [0, lane_length]
   const auto s1_saturated = std::max(0.0, std::min(s1, total_length));
@@ -771,7 +780,8 @@ double getLaneletAngle(
   const lanelet::ConstLanelet & lanelet, const geometry_msgs::msg::Point & search_point)
 {
   lanelet::BasicPoint2d llt_search_point(search_point.x, search_point.y);
-  lanelet::ConstLineString3d segment = getClosestSegment(llt_search_point, lanelet.centerline());
+  lanelet::ConstLineString3d segment =
+    deprecated::getClosestSegment(llt_search_point, lanelet.centerline());
   return std::atan2(
     segment.back().y() - segment.front().y(), segment.back().x() - segment.front().x());
 }
@@ -802,7 +812,8 @@ geometry_msgs::msg::Pose getClosestCenterPose(
     return closest_pose;
   }
 
-  lanelet::ConstLineString3d segment = getClosestSegment(llt_search_point, lanelet.centerline());
+  lanelet::ConstLineString3d segment =
+    deprecated::getClosestSegment(llt_search_point, lanelet.centerline());
   if (segment.empty()) {
     return geometry_msgs::msg::Pose{};
   }
@@ -818,7 +829,7 @@ geometry_msgs::msg::Pose getClosestCenterPose(
   closest_pose.position.y = p.y();
   closest_pose.position.z = search_point.z;
 
-  const double lane_yaw = getLaneletAngle(lanelet, search_point);
+  const double lane_yaw = deprecated::getLaneletAngle(lanelet, search_point);
   tf2::Quaternion q;
   q.setRPY(0, 0, lane_yaw);
   closest_pose.orientation = tf2::toMsg(q);
@@ -830,7 +841,7 @@ double getLateralDistanceToCenterline(
   const lanelet::ConstLanelet & lanelet, const geometry_msgs::msg::Pose & pose)
 {
   const auto & centerline_2d = lanelet::utils::to2D(lanelet.centerline());
-  const auto lanelet_point = lanelet::utils::conversion::toLaneletPoint(pose.position);
+  const auto lanelet_point = deprecated::toLaneletPoint(pose.position);
   return lanelet::geometry::signedDistance(
     centerline_2d, lanelet::utils::to2D(lanelet_point).basicPoint());
 }
@@ -839,8 +850,8 @@ double getLateralDistanceToClosestLanelet(
   const lanelet::ConstLanelets & lanelet_sequence, const geometry_msgs::msg::Pose & pose)
 {
   lanelet::ConstLanelet closest_lanelet;
-  lanelet::utils::query::getClosestLanelet(lanelet_sequence, pose, &closest_lanelet);
-  return getLateralDistanceToCenterline(closest_lanelet, pose);
+  deprecated::getClosestLanelet(lanelet_sequence, pose, &closest_lanelet);
+  return deprecated::getLateralDistanceToCenterline(closest_lanelet, pose);
 }
 }  // namespace lanelet::utils
 
