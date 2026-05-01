@@ -1,0 +1,172 @@
+ros-rolling-autoware-lanelet2-extension-python (1.0.0-1trixie) trixie; urgency=high
+
+  * feat(lanelet2_extension): deprecate lanelet2_extension utilities functions (final)  (#103 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/103>)
+    Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+  * feat(lanelet2_extension): deprecate toGeomMsgPt/toLaneltPoint (#102 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/102>)
+    * feat(lanelet2_extension): deprecate toGeomMsgPt/toLaneltPoint
+    * fix build error
+    * fix build error 2
+    * fix build error 3
+    * fix build error 4
+    * fix build error 5
+    ---------
+  * feat(lanelet2_extension): deprecate remaining functions in utilities  (#95 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/95>)
+  * feat(lanelet2_extension): deprecate getClosestLanelet and others (#97 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/97>)
+    Co-authored-by: Junya Sasaki <mailto:j2sasaki1990@gmail.com>
+  * Contributors: Mamoru Sobue, Sarun MUKDAPITAK
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Fri, 27 Mar 2026 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.12.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Tue, 17 Feb 2026 08:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.11.0-1trixie) trixie; urgency=high
+
+  * feat(lanelet2_extension): deprecate some functions in query (2) (#94 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/94>)
+    deprecate ported functions
+    - getLaneChangeableNeighbors
+    - getSuceedingLaneletSequences
+    - getPrecedingLaneletSequences
+  * feat(lanelet2_extension): deprecate some functions in query (#91 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/91>)
+    * deprecate following functions
+    - getAllNeighbors
+    - getAllNeighborsLeft
+    - getAllNeighborsRight
+    - getLaneletsWithinRange
+    * deprecate overload of getAllNeighbors
+    ---------
+  * feat(lanelet2_extension): deprecate fromBinMsg and toBinMsg (#89 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/89>)
+  * feat: add tmp to python API (#90 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/90>)
+    * feat: add TMProjector in python API
+    Also add code docs for easier usage in IDE.
+    * Rename import for boost python projection module
+  * feat(lanelet2_extension): deprecate getLaneletLength2d and getLaneletLength3d (#88 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/88>)
+    Co-authored-by: Mamoru Sobue <mailto:hilo.soblin@gmail.com>
+  * feat(lanelet2_extension): deprecate ported functions in lanelet2_extension (#81 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/81>)
+  * feat(lanelet2_extension_python): export MGRSProjector::getProjectedMGRSGrid for python (#87 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/87>)
+    feat(lanelet2_extension_python): export more MGRS functions for python
+  * feat(lanelet2_extension_python): add python binding for MGRSProjector (#84 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/84>)
+  * chore(lanelet2_extension_python): add maintainer (#85 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/85>)
+  * test(lanelet2_extension_python): add test & test for import (#83 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/83>)
+  * Contributors: Mamoru Sobue, Sarun MUKDAPITAK, Yuxuan Liu
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Sat, 14 Feb 2026 08:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.10.0-1trixie) trixie; urgency=high
+
+  * feat(lanelet2_extension_python): add bindings for fromBinMsg (#80 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/80>)
+  * Contributors: Maxime CLEMENT
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Wed, 05 Nov 2025 08:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.9.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Mon, 04 Aug 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.8.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Tue, 22 Jul 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.7.2-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Wed, 14 May 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.7.1-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Fri, 25 Apr 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.7.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Mon, 07 Apr 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.6.4-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Fri, 04 Apr 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.6.3-1trixie) trixie; urgency=high
+
+  * chore: sync files (#42 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/42>)
+    Co-authored-by: M. Fatih Cırıt <mailto:mfc@autoware.org>
+  * fix(autoware_lanelet2_extension): fix links to issues in CHANGELOG.rst files (#40 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/40>)
+  * Contributors: Esteve Fernandez, awf-autoware-bot[bot]
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Mon, 17 Mar 2025 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.6.2-1trixie) trixie; urgency=high
+
+  * fix(Python bindings): add missing dependency to lanelet2 (#32 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/32>)
+  * Contributors: Kenji Miyake
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Thu, 21 Nov 2024 08:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.6.1-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Fri, 06 Sep 2024 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.6.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Wed, 28 Aug 2024 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.5.0-1trixie) trixie; urgency=high
+
+  * chore(ci): fix cpplint errors from pre-commit ci (#15 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/15>)
+  * chore: apply pre-commit (#14 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/14>)
+    apply pre-commit
+  * Contributors: Daisuke Nishimatsu, Ryohsuke Mitsudome
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Wed, 10 Jul 2024 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.4.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Mon, 24 Jun 2024 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.3.0-1trixie) trixie; urgency=high
+
+
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Fri, 31 May 2024 07:00:00 -0000
+
+ros-rolling-autoware-lanelet2-extension-python (0.2.0-1trixie) trixie; urgency=high
+
+  * refactor: add autoware_ prefix to package names and namespaces (#3 <https://github.com/autowarefoundation/autoware_lanelet2_extension/issues/3>)
+    * fix readme
+    * fix link
+    * fix link
+    * revert readme
+    * wip
+    * update package names
+    * update package names
+    * fix include
+    * rename module
+    * rename to autoware_
+    * fix depend
+    * rename to autoware_
+    * Revert "wip"
+    This reverts commit 8079660c318feace9d841aacd39a8945aa144cf7.
+    ---------
+  * Contributors: Yutaka Kondo
+
+ -- "Mamoru Sobue" <mamoru.sobue@tier4.jp>  Tue, 07 May 2024 07:00:00 -0000
+
+
