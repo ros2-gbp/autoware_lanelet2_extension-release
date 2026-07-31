@@ -53,4 +53,4 @@ if(BUILD_TESTING)
   target_link_libraries(normalize-radian ${PROJECT_NAME}_lib ${tf2_LIBRARIES})
 endif()
 
-ament_auto_package()
+ament_auto_package(USE_SCOPED_HEADER_INSTALL_DIR)
